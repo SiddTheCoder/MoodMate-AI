@@ -8,17 +8,19 @@ import GoogleCallback from "./pages/Oauth/GoogleCallback";
 import PageNotFound from "./pages/PageNotFound";
 import PageBacker from "./components/PageBacker";
 import Signup from "./pages/SignupPage"; 
-import ChatPage from "./pages/ChatPage"; 
+ 
 import MoodLogPage from "./pages/MoodLogPage";
 import Lander from "./pages/Lander";
 import PrivateRoute from "./routes/PrivateRoute";
 import MainLayout from "./layout/MainLayout";
 import DashboardPage from "./pages/Dashboard/DashboardPage";
-import Suzzy from "./pages/Suzzy";
+import DoctorDashboard from "./pages/DoctorDashboard";
 import SettingLayout from "./pages/Setting/SettingLayout";
-import BecomeDoctor from "./pages/BecomeDoctor/BecomeDoctor";
+import BecomeDoctor from "./pages/Doctor/BecomeDoctor";
 import ChatPageLayout from "./pages/Chat/ChatPageLayout";
-
+import Appointment from "./pages/Appointment/Appointment";
+import Community from "./pages/Community/Community";
+import ChatWithDoctor from "./pages/Chat/ChatWithDoctor";
 
 function App() {
   const dispatch = useDispatch();
@@ -77,28 +79,11 @@ function App() {
 
           <Route path="/" element={<Lander />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Signup />} />
 
           <Route path="/oauth/google/callback" element={<GoogleCallback />} />
 
-          {/* <Route
-            path="/chat"
-            element={
-              <PrivateRoute>
-                <ChatPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/mood-graph"
-            element={
-              <PrivateRoute>
-                <MoodLogPage />
-              </PrivateRoute>
-            }
-          /> */}
-
           <Route path="/" element={<MainLayout />}>
-            <Route index element={<Lander />} />
             <Route
               path="chat"
               element={
@@ -112,6 +97,30 @@ function App() {
               element={
                 <PrivateRoute>
                   <SettingLayout />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="chat-with-doctor"
+              element={
+                <PrivateRoute>
+                  <ChatWithDoctor />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="community"
+              element={
+                <PrivateRoute>
+                  <Community />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="appointment"
+              element={
+                <PrivateRoute>
+                  <Appointment />
                 </PrivateRoute>
               }
             />
@@ -132,7 +141,6 @@ function App() {
               }
             />
 
-            
             <Route
               path="dashboard"
               element={
@@ -150,12 +158,10 @@ function App() {
                 </PrivateRoute>
               }
             />
-
-           
           </Route>
 
           <Route path="*" element={<PageNotFound />} />
-          <Route path="/suzzy" element={<Suzzy />} />
+          <Route path="/doctor-dashboard" element={<DoctorDashboard />} />
         </Routes>
       </Router>
     </>

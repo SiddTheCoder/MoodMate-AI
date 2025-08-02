@@ -35,7 +35,7 @@ const MainLayout = () => {
 
         {/* Main content shifted to the right of sidebar */}
         <div
-          className="h-full overflow-y-auto bg-gray-50 flex-1"
+          className="h-full overflow-y-auto bg-gray-50 flex-1 pl-2"
           style={{ marginLeft: sidebarWidth }}
         >
           <Outlet />

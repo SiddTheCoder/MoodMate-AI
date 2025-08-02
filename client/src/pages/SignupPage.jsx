@@ -1,13 +1,11 @@
 import React from "react";
-import { Target } from "lucide-react";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import Logo from "../assets/e18e014e-98af-4f3d-b93d-9113c64c4aff.jpeg";
 
 function Signup() {
   const navigate = useNavigate();
 
   const handleGoogleSignIn = () => {
-    // Handle Google sign-in logic here
     console.log("Google sign-in clicked");
     const params = new URLSearchParams({
       client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
@@ -22,35 +20,58 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo and Brand */}
+    <div className="relative min-h-screen bg-[#1D3557] overflow-hidden flex items-center justify-center p-4">
+      {/* Glowing Blurry Ball */}
+      <div className="absolute top-[10%] left-[15%] w-60 h-60 bg-[#4a8ab3] opacity-30 rounded-full filter blur-3xl animate-pulse mix-blend-screen"></div>
+
+      {/* Curvy SVG Graphic */}
+      <svg
+        className="absolute bottom-0 left-0 w-full"
+        viewBox="0 0 1440 320"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill="#457B9D"
+          fillOpacity="0.4"
+          d="M0,96L40,122.7C80,149,160,203,240,208C320,213,400,171,480,138.7C560,107,640,85,720,101.3C800,117,880,171,960,192C1040,213,1120,203,1200,181.3C1280,160,1360,128,1400,112L1440,96L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+        ></path>
+      </svg>
+
+      {/* Content Container */}
+      <div className="w-full max-w-md z-10">
+        {/* Logo and Branding */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center">
-              {/* Logo Icon */}
-              <img src={Logo} alt="" />
+            <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-[#468ffc] shadow-lg">
+              <img
+                src={Logo}
+                alt="MoodMate Logo"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
-          <h1 className="text-4xl font-bold text-blue-600 mb-2">MoodMate</h1>
-          <p className="text-gray-600 text-lg">
+          <h1 className="text-4xl font-bold text-[#468ffc] mb-2">MoodMate</h1>
+          <p className="text-[#C0C0C0] text-lg font-medium">
             “We didn’t just build a bot. We built a buddy.”
           </p>
         </div>
 
         {/* Sign In Card */}
-        <div className="bg-white rounded-2xl shadow-xl p-8">
+        <div className="rounded-2xl shadow-2xl p-8 bg-gradient-to-b from-[#457B9D]/70 to-[#1D3557]/80 backdrop-blur-md border border-white/20">
           <div className="text-center mb-6">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">
+            <h2 className="text-2xl font-semibold text-white mb-2">
               Sign in to your account
             </h2>
-            <p className="text-gray-600">Use your Google account to continue</p>
+            <p className="text-[#C0C0C0]">
+              Use your Google account to continue
+            </p>
           </div>
 
           {/* Google Sign In Button */}
           <button
             onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center gap-3 bg-white border border-gray-300 rounded-lg px-6 py-3 text-gray-700 font-medium hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 shadow-sm hover:shadow-md"
+            className="w-full flex items-center justify-center gap-3 bg-[#4a8ab3] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#3c7ba0] transition-all duration-200 shadow-md"
           >
             <svg className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -74,10 +95,10 @@ function Signup() {
           </button>
         </div>
 
-        {/* Bottom Text */}
+        {/* Bottom Message */}
         <div className="text-center mt-8">
-          <p className="text-gray-500 text-sm leading-relaxed">
-            Get Your Emotional Buddy Today !
+          <p className="text-[#C0C0C0] text-sm tracking-wide">
+            Get Your Emotional Buddy Today!
           </p>
         </div>
       </div>

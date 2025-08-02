@@ -76,8 +76,8 @@ export const sendMessageToActiveChat = asyncHandler(async (req, res) => {
     // generating chat title
     const userMessages = chat.messages.filter((m) => m.role === "user");
     const userMessagesContent = userMessages.map((m) => m.content);
-    if (chat.messages.length > 5) {
-      const messages = userMessagesContent.slice(-5);
+    if (chat.messages.length > 2) {
+      const messages = userMessagesContent.slice(-2);
       const title = await generateChatTitle(messages);
       if (chat.title === "New Chat") {
         chat.title = title;
@@ -220,13 +220,18 @@ export const startNewChat = asyncHandler(async (req, res) => {
   // Create a new active chat
   const newChat = await Chat.create({
     user: userId,
+    title: "New Chat",
     isActive: true,
   });
 
   res
     .status(200)
     .json(
-      new ApiResponse(200, { chat: newChat }, "Started a new chat with AI")
+      new ApiResponse(
+        200,
+        { chat: newChat, messages: [] },
+        "Started a new chat with AI"
+      )
     );
 });
 
@@ -234,22 +239,14 @@ export const startNewChat = asyncHandler(async (req, res) => {
 export const getUserAllChats = asyncHandler(async (req, res) => {
   const userId = req.user._id;
 
-  const currentChat = await Chat.findOne({
+  const chats = await Chat.find({
     user: userId,
-    isActive: true,
-  }).select("-isActive -__v");
-
-  const remainingChats = await Chat.find({ user: userId, isActive: false })
-    .sort({ createdAt: -1 })
-    .select("-isActive -__v");
+  }).sort({ createdAt: -1 });
 
   res.json(
     new ApiResponse(
       200,
-      {
-        currentChat,
-        remainingChats,
-      },
+     chats,
       "Fetched all chats"
     )
   );

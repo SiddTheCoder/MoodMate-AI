@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isSideBarCollapsed: false,
   screenView: "desktop",
-  // product search filter state
+  isSuggestionBoxOpen: false,
 };
 
 const localStateSlice = createSlice({
@@ -16,9 +16,15 @@ const localStateSlice = createSlice({
     setScreenView: (state, action) => {
       state.screenView = action.payload;
     },
+    setIsSuggestionBoxOpen: (state, action) => {
+      state.isSuggestionBoxOpen = action.payload;
+    },
+    toggleSuggestionBox: (state) => {
+      state.isSuggestionBoxOpen = !state.isSuggestionBoxOpen;
+    },
   },
 });
 
-export const { setIsSideBarCollapsed, setScreenView } = localStateSlice.actions;
+export const { setIsSideBarCollapsed, setScreenView, setIsSuggestionBoxOpen, toggleSuggestionBox } = localStateSlice.actions;
 
 export default localStateSlice.reducer;
