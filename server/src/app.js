@@ -26,4 +26,12 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/chat", chatRoutes);
 app.use("/api/v1/user", userRoutes);
 
+app.get("/ping", (req, res) => {
+  res.json({
+    message: "OK",
+    uptime: process.uptime(), // in seconds
+    timestamp: new Date(),
+  });
+});
+
 export default app;

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import MobileMenuBar from "../components/MobileMenuBar";
 import { setScreenView } from "../feature/localstate/localStateSlice";
 import LoaderModal from "../components/LoaderModal";
+import Lander from "../pages/Lander";
 
 const MainLayout = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const MainLayout = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, [window.innerWidth]);
 
-  if (loading) return <LoaderModal />;
+  if (loading) return <Lander />;
 
   // Sidebar width depends on collapse state
   const sidebarWidth = isSideBarCollapsed ? 75 : 250;
