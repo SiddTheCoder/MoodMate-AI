@@ -1,5 +1,5 @@
 // # Handles messages from user & generates AI reply
-import { Message } from "../models/Message.model.js";
+import { Message } from "../models/message.model.js";
 import {
   detectEmotionForEachMessage,
   detectEmotionFromCombinedMessages,
